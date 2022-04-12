@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+
+    <title>Segmentation Analysis | Sat Analysis</title>
+    <meta content="" name="description" />
+    <meta content="" name="keywords" />
+
+    <!-- Favicons -->
+    <link
+      href="{{ url_for('static', filename='img/favicon.png')}}static/img/favicon.png"
+      rel="icon"
+    />
+    <link
+      href="{{ url_for('static', filename='img/apple-touch-icon.png')}}"
+      rel="apple-touch-icon"
+    />
+
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Montserrat:300,400,500,700"
+      rel="stylesheet"
+    />
+
+    <!-- Vendor CSS Files -->
+    <link
+      href="{{ url_for('static', filename='vendor/bootstrap/css/bootstrap.min.css')}}"
+      rel="stylesheet"
+    />
+    <link
+      href="{{ url_for('static', filename='vendor/icofont/icofont.min.css')}}"
+      rel="stylesheet"
+    />
+    <link
+      href="{{ url_for('static', filename='vendor/font-awesome/css/font-awesome.min.css')}}"
+      rel="stylesheet"
+    />
+    <link
+      href="{{ url_for('static', filename='vendor/ionicons/css/ionicons.min.css')}}"
+      rel="stylesheet"
+    />
+    <link
+      href="{{ url_for('static', filename='vendor/animate.css/animate.min.css')}}"
+      rel="stylesheet"
+    />
+    <link
+      href="{{ url_for('static', filename='vendor/venobox/venobox.css')}}"
+      rel="stylesheet"
+    />
+
+    <link
+      href="{{ url_for('static', filename='vendor/aos/aos.css')}}"
+      rel="stylesheet"
+    />
+
+    <!-- Template Main CSS File -->
+    <link
+      href="{{ url_for('static', filename='css/style.css')}}"
+      rel="stylesheet"
+    />
+
+    <!-- =======================================================
+  * Template Name: BizPage - v3.1.1
+  * Template URL: https://bootstrapmade.com/bizpage-bootstrap-business-template/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+  </head>
+
+  <body>
+    <!-- ======= Header ======= -->
+    <header id="header" class="fixed-top">
+      <div class="container-fluid">
+        <div class="row justify-content-center">
+          <div class="col-xl-11 d-flex align-items-center">
+            <!-- <h1 class="logo mr-auto"><a href="index.html">Sat Analyis</a></h1> -->
+            <!-- Uncomment below if you prefer to use an image logo -->
+            <!-- <a href="index.html" class="logo mr-auto"><img src="static/img/logo.png" alt="" class="img-fluid"></a>-->
+
+            <nav class="nav-menu d-none d-lg-block">
+              <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#about">Try now</a></li>
+                <li><a href="index.html#services">Know more</a></li>
+              </ul>
+            </nav>
+            <!-- .nav-menu -->
+          </div>
+        </div>
+      </div>
+    </header>
+    <!-- End Header -->
+
+    <main id="main">
+      <!-- ======= Breadcrumbs Section ======= -->
+      <section class="breadcrumbs">
+        <div class="container">
+          <div class="d-flex justify-content-between align-items-center">
+            <h2>Image Segmentaion</h2>
+            <ol>
+              <li><a href="index.html">Home</a></li>
+              <!-- <li><a href="portfolio.html">Portfolio</a></li> -->
+              <li>Image Segmentaion</li>
+            </ol>
+          </div>
+        </div>
+      </section>
+      <!-- Breadcrumbs Section -->
+
+      <!-- ======= Portfolio Details Section ======= -->
+      <section class="portfolio-details">
+        <div class="container">
+          <h5>Instructions:</h5>
+          <p>
+            1. Select the type of feature to analyse i.e roadways/ buildings.
+            <br />
+            2. Choose the file (filetype should be .tif). <br />
+            3. Click on upload button. <br />
+          </p>
+        </div>
+      </section>
+      <!-- End Portfolio Details Section -->
+    </main>
+    <!-- End #main -->
+
+    <!-- ----------------------------------------------------------------------------------------------------------------------------------- -->
+    <section
+      id="portfolio"
+      class="section-bg"
+      style="overflow: auto; max-height: 100vh"
+    >
+      <div class="container" data-aos="fade-up">
+        <header class="section-header">
+          <h3 class="section-title">Try Now</h3>
+        </header>
+        <!-- --------------- -->
+        <!-- form start -------------------------->
+        <form method="post" enctype="multipart/form-data" id="sendSegmentation">
+          <!-- row first -->
+          <h5>Choose the type of feature to analyze:</h5>
+          <div class="row">
+            <br />
+            <div class="col-sm">
+              <select class="btn btn-success" name="type" id="type">
+                <option value="road">RoadWays</option>
+                <option value="building">Building</option>
+              </select>
+            </div>
+          </div>
+          <br />
+
+          <h5>Choose the city:</h5>
+          <div class="row">
+            <br />
+            <div class="col-sm">
+              <select class="btn btn-success" name="city" id="city">
+                <option value="paris">paris</option>
+                <option value="khartoum">khartoum</option>
+                <option value="vegas">vegas</option>
+              </select>
+            </div>
+          </div>
+          <br />
+          <br />
+          <div class="row">
+            <br />
+            <div class="col-sm">
+              <input
+                type="file"
+                role="button"
+                name="data"
+                class="btn btn-success"
+              />
+            </div>
+
+            <div class="col-sm">
+              <input
+                type="submit"
+                role="button"
+                class="btn btn-success"
+                value="Upload"
+              />
+            </div>
+            <br />
+            <br />
+            <div class="col-sm">
+              <div id="loadingmessage2" style="display: none">
+                <img src="static/img/loader.gif" />
+                <p style="font-size: medium">Please wait</p>
+              </div>
+            </div>
+          </div>
+
+          <br />
+          <br />
+          <div class="container" id="displayOutput"></div>
+
+          <br />
+          <br />
+          <!-- new row -->
+          <!-- <div class="row">
+            <div class="col-sm">
+              <input
+                type="submit"
+                role="button"
+                class="btn btn-success"
+                value="Upload"
+              />
+            </div>
+            <div id="loadingmessage1" style="display: none"></div>
+          </div> -->
+        </form>
+
+        <br />
+        <br />
+        <!-- form end ------------------------------>
+
+        <div
+          class="row portfolio-container"
+          data-aos="fade-up"
+          data-aos-delay="200"
+          id="allData"
+        ></div>
+      </div>
+    </section>
+    <!-- ---------------------------------------------------------------------------------------------------- -->
+
+    <script src="static/vendor/jquery/jquery.min.js"></script>
+    <script src="static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="static/vendor/jquery.easing/jquery.easing.min.js"></script>
+    <script src="static/vendor/php-email-form/validate.js"></script>
+    <script src="static/vendor/waypoints/jquery.waypoints.min.js"></script>
+    <script src="static/vendor/counterup/counterup.min.js"></script>
+    <script src="static/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+    <script src="static/vendor/venobox/venobox.min.js"></script>
+    <script src="static/vendor/owl.carousel/owl.carousel.min.js"></script>
+    <script src="static/vendor/aos/aos.js"></script>
+
+    <!-- Template Main JS File -->
+    <script src="{{ url_for('static', filename='js/segment.js')}}"></script>
+    <script src="static/js/main.js"></script>
+  </body>
+</html>
